@@ -20,7 +20,6 @@ task :default, :filename, :twitter_account do |t,args|
   oauth = Twitter::OAuth.new(config['token'],config['secret'])
   oauth.authorize_from_access(config[args[:twitter_account]]['atoken'],config[args[:twitter_account]]['asecret'])
   @twitter_client = Twitter::Base.new(oauth)
-  @twitter_client.update("Start Test 123 - #{Time.now}")
   while hot_spots_ahead.size > 0 do
     position = Stalker.last_known_position
     next_hot_spot = hot_spots_ahead.first

@@ -104,11 +104,8 @@ class HotSpot
   
   def etf_in_twelve_hour_format
     hour = etf.hour
-    suffix = 'AM'
-    if (hour > 12)
-      hour -= 12
-      suffix = 'PM'
-    end
-    return "#{hour}:#{etf.min}#{suffix}"
+    suffix = (hour >= 12) ? 'PM' : 'AM'
+    hour -= 12 if (hour > 12)
+    return "#{hour}:#{sprintf("%02d",etf.min)}#{suffix}"
   end
 end
