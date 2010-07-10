@@ -48,10 +48,10 @@ task :default, :filename, :twitter_account do |t,args|
           puts "Predecessor Time Triggered: #{next_hot_spot.predecessor.time_triggered}"
           puts "Predecessor Time Located: #{next_hot_spot.predecessor.time_located}"
         end
-        #begin
+        begin
           @twitter_client.update(next_hot_spot.message) if next_hot_spot.message
-        #rescue
-        #end
+        rescue
+        end
         hot_spots_behind << next_hot_spot
         hot_spots_ahead.shift
       end
